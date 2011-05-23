@@ -14,7 +14,7 @@ Version: 1.0
 
 
 /* Ok, let's clear this puppy out */
-@import "_/css/clear.css";
+@import "_/css/reset.css";
 
 
 /* Typography
