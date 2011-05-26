@@ -111,9 +111,13 @@
 	<div id="page-wrap">
 
 		<header id="header">
-			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 			
-			<div class="description"><?php bloginfo('description'); ?></div>
+			<div id="branding">
+				
+				<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+				<h5><?php bloginfo('description'); ?></h5>
+			
+			</div>
 			
 			<nav id='nav-primary' class="clearfix">
 				<?php 

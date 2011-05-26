@@ -14,19 +14,19 @@
 	
 	<h2 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?></h2>
 
-	<div class="navigation">
+	<nav class="comment-pagination">
 		<div class="next-posts"><?php previous_comments_link() ?></div>
 		<div class="prev-posts"><?php next_comments_link() ?></div>
-	</div>
+	</nav>
 
 	<ol class="commentlist">
 		<?php wp_list_comments(); ?>
 	</ol>
 
-	<div class="navigation">
+	<nav class="comment-pagination">
 		<div class="next-posts"><?php previous_comments_link() ?></div>
 		<div class="prev-posts"><?php next_comments_link() ?></div>
-	</div>
+	</nav>
 	
  <?php else : // this is displayed if there are no comments so far ?>
 
