@@ -11,41 +11,45 @@
 	//load WPAlchemy_MetaBox class
 	include_once '_/inc/MetaBox.php';
 	
-	function vsi_init_method() {
-		if ( is_admin()) {
-	
-			// Load WPAlchemy_MetaBox style
-			wp_enqueue_style('custom_metabox_css', get_bloginfo('template_directory') . '/_/css/metabox.css');
-			
-			//Add Custom Editor Style
-			add_editor_style('/_/css/editor-style.css');
-
-		}else {
-		
-			//Load frontend Javascript
-			wp_register_script('scripts', get_bloginfo('template_directory') . '/_/js/scripts.js',array('jquery'),'1.0', true );
-			wp_enqueue_script('scripts');
-		
-		}
-	}
-	
-	add_action('init', 'vsi_init_method');
-	
-	// Add RSS links to <head> section
-	automatic_feed_links();
 	
 	// Load jQuery
 	if ( !function_exists(core_mods) ) {
 		function core_mods() {
 			if ( !is_admin() ) {
-				wp_deregister_script('jquery');
-				wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"), false);
-				wp_enqueue_script('jquery');
+				
 			}
 		}
 		core_mods();
 	}
 	
+	add_action('init', 'vsi_init_method');
+	
+	function vsi_init_method() {
+	
+		if ( is_admin()) {
+	
+			// Load custom metabox style
+			wp_enqueue_style('custom_metabox_css', get_bloginfo('template_directory') . '/_/css/metabox.css');
+			
+			// Load custom editor style
+			add_editor_style('/_/css/editor-style.css');
+
+		}else {
+			
+			// Load jQuery
+			wp_deregister_script('jquery');
+			wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"), false, '1.6.1',  false);
+			wp_enqueue_script('jquery');
+			
+			//Load frontend Javascript
+			wp_register_script('scripts', get_bloginfo('template_directory') . '/_/js/scripts.js', array('jquery'), '1.0', true );
+			wp_enqueue_script('scripts');
+		
+		}
+	}
+	
+	// Add RSS links to <head> section
+	automatic_feed_links();
 	
 /* Add post format theme support. (WP 3.1)
 	-----------------------------------------------------------------------------*/
@@ -94,7 +98,7 @@
 	
 /*
 	
-	//Add videos
+	// Add videos
 	
 	add_action('init', 'create_videos_post_type');
 	function create_videos_post_type() {
@@ -133,6 +137,40 @@
 */	
 	
 
+	
+/* Add Custom Taxonomies
+	-----------------------------------------------------------------------------*/
+
+/*
+	//Add Custom Taxonomy: video-categories
+	
+	add_action( 'init', 'create_video_taxonomies', 0 );
+	function create_video_taxonomies() {
+		$labels = array(
+			'name' => _x( 'Video Categories', 'taxonomy general name' ),
+			'singular_name' => _x( 'Video Category', 'taxonomy singular name' ),
+			'search_items' =>	 __( 'Search Categories' ),
+			'all_items' => __( 'All Categories' ),
+			'parent_item' => __( 'Parent Category' ),
+			'parent_item_colon' => __( 'Parent Category:' ),
+			'edit_item' => __( 'Edit Category' ), 
+			'update_item' => __( 'Update Category' ),
+			'add_new_item' => __( 'Add New Category' ),
+			'new_item_name' => __( 'New Genre Category' ),
+			'menu_name' => __( 'Video Categories' ),
+		);
+	
+		register_taxonomy('video-categories',array('video'), array(
+			'hierarchical' => false,
+			'labels' => $labels,
+			'show_ui' => true,
+			'query_var' => true,
+			'rewrite' => false,
+		));
+	}
+
+*/
+
 /* Register Contextual Help menus
 	-----------------------------------------------------------------------------*/
 
@@ -164,51 +202,13 @@
 			'<p>' . __('To insert a recipe into a post or page, use the following shortcode:') . '</p>' .
 			'<code>' . __('[recipe-show template="recipe-embed" recipe="california-power-salad"]') . '</code>' .
 			'<em>' . __('(where "california-power-salad" is the URL slug of the recipe)') . '</em>';
-		} elseif ( 'page' == $screen->id) {
-		 $contextual_help = 
-			'<h2>' . __('Page Help') . '</h2>' .
-			'<p>' . __('To insert a recipe into a post or page, use the following shortcode:') . '</p>' .
-			'<code>' . __('[recipe-show template="recipe-embed" recipe="california-power-salad"]') . '</code>' .
-			'<em>' . __('(where "california-power-salad" is the URL slug of the recipe)') . '</em>';
-		}
-	return $contextual_help;
+		} 
+		return $contextual_help;
 	}
 	
 */
-	
-/* Add Custom Taxonomies
-	-----------------------------------------------------------------------------*/
 
-/*
-	//Add Custom Taxonomy: video-categories
-	add_action( 'init', 'create_video_taxonomies', 0 );
-	function create_video_taxonomies() {
-		$labels = array(
-			'name' => _x( 'Video Categories', 'taxonomy general name' ),
-			'singular_name' => _x( 'Video Category', 'taxonomy singular name' ),
-			'search_items' =>	 __( 'Search Categories' ),
-			'all_items' => __( 'All Categories' ),
-			'parent_item' => __( 'Parent Category' ),
-			'parent_item_colon' => __( 'Parent Category:' ),
-			'edit_item' => __( 'Edit Category' ), 
-			'update_item' => __( 'Update Category' ),
-			'add_new_item' => __( 'Add New Category' ),
-			'new_item_name' => __( 'New Genre Category' ),
-			'menu_name' => __( 'Video Categories' ),
-		);
-	
-		register_taxonomy('video-categories',array('video'), array(
-			'hierarchical' => false,
-			'labels' => $labels,
-			'show_ui' => true,
-			'query_var' => true,
-			'rewrite' => false,
-		));
-	}
-
-*/
-
-/* Register Custom Meta Boxes (using the WPAlchemy_MetaBox class)
+/* Register Custom Admin Meta Boxes (using the WPAlchemy_MetaBox class)
 	-----------------------------------------------------------------------------*/
 
 /*
@@ -234,7 +234,7 @@
 	 add_action('init', 'removeHeadLinks');
 	 remove_action('wp_head', 'wp_generator');
 	 
-	// Fix embeded flash z-index bug
+	// Fix embeded flash z-index
 	add_filter('the_content', 'add_opaque_to_all_flash');
 	
 	function add_opaque_to_all_flash($string) {
