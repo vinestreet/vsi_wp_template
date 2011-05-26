@@ -69,8 +69,6 @@ tr td { border-top: 1px solid #ccc; padding: 10px }
 
 #sidebar {}
 
-
-
 /* Navigation
 -------------------------------------------------------------------------------*/
 .navgation {}
@@ -86,13 +84,15 @@ tr td { border-top: 1px solid #ccc; padding: 10px }
 #nav-primary ul li:hover{ position: relative; }
 
 /* LEVEL TWO */
-#nav-primary ul ul{ width: 220px; visibility: hidden; position: absolute; top: 100%; left: -1px; border-bottom:1px solid #ccc;}
-#nav-primary ul ul li{ font-weight: normal; background: #f6f6f6; color: #000; float: none; border-bottom: none; }
+#nav-primary ul ul{ width: 220px; visibility: hidden; position: absolute; top: 100%; left: -1px; border-bottom:1px solid #ccc; }
+#nav-primary ul ul li{ font-weight: normal; background: #f6f6f6; float: none; border-bottom: none;  }  /* IE fix: vertical-align: top; */
+.ie #nav-primary ul ul li{vertical-align: top;}
 
-#nav-primary ul ul li a{  width: 100%; display: inline-block; } 
+#nav-primary ul ul li a{  width: 100%;   } 
+.ie #nav-primary ul ul li a{ display: inline-block; }
 
 /* LEVEL THREE */
-#nav-primary ul ul ul{ left: 100%; top: 0; }
+#nav-primary ul ul ul{ left: 100%; top: 0px; }
 #nav-primary ul li:hover > ul{ visibility: visible; }
 
 
