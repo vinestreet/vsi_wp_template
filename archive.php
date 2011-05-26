@@ -35,7 +35,7 @@
 				
 						<h2 id="post-<?php the_ID(); ?>"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
 					
-						<?php include (TEMPLATEPATH . '/_/inc/meta.php' ); ?>
+						<?php include (TEMPLATEPATH . '/_/inc/post-meta.php' ); ?>
 
 						<div class="entry">
 							<?php the_content(); ?>

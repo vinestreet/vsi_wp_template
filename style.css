@@ -17,7 +17,7 @@ Version: 1.0
 @import "_/css/reset.css";
 
 
-/* Typography
+/* Globals
 -------------------------------------------------------------------------------*/
 
 /* new Linux- and Windows-friendly sans-serif font stack: http://mky.be/fontstack 
@@ -49,15 +49,62 @@ p {}
 blockquote { }
 blockquote p { }
 
+/* Forms */
+
+fieldset	{padding: 20px; border: 1px solid #ccc;}
+legend{ padding: 0 10px; }
+label{ float: left;  clear: both }
 /* Lists */
 ul,ol { margin:0 0 10px; }
 ul li, ol li{ margin: 0 0 0 20px; }
 
+/* Tables */
+table {border-collapse: collapse; border-spacing: 0; border: 1px solid #ccc; text-align: left; }
+tr th, thead th { font-weight: bold; padding: 10px }
+tr td { border-top: 1px solid #ccc; padding: 10px }
 
 /* Layout
 -------------------------------------------------------------------------------*/
 
 #page-wrap {width: 960px; margin: 20px auto;}
+
+#sidebar {}
+
+
+
+/* Navigation
+-------------------------------------------------------------------------------*/
+.navgation {}
+.next-posts {}
+.prev-posts {}
+
+/* LEVEL ONE */
+#nav-primary ul{ float:left; position: relative;  border-right:1px solid #ccc;}
+#nav-primary ul li{ margin: 0; float: left; zoom: 1; border-left:1px solid #ccc; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
+#nav-primary ul li a{ display: block; padding: 4px 8px;  color: #333; text-decoration: none; }
+#nav-primary ul li a:hover{ color: #69f; }
+#nav-primary ul li.hover,
+#nav-primary ul li:hover{ position: relative; }
+
+/* LEVEL TWO */
+#nav-primary ul ul{ width: 220px; visibility: hidden; position: absolute; top: 100%; left: -1px; border-bottom:1px solid #ccc;}
+#nav-primary ul ul li{ font-weight: normal; background: #f6f6f6; color: #000; float: none; border-bottom: none; }
+
+#nav-primary ul ul li a{  width: 100%; display: inline-block; } 
+
+/* LEVEL THREE */
+#nav-primary ul ul ul{ left: 100%; top: 0; }
+#nav-primary ul li:hover > ul{ visibility: visible; }
+
+
+/* Search
+-------------------------------------------------------------------------------*/
+#searchform {}
+#s {}
+#searchsubmt {}
+
+/* Content
+-------------------------------------------------------------------------------*/	
 
 .post {}
 
@@ -67,28 +114,16 @@ ul li, ol li{ margin: 0 0 0 20px; }
 
 #meta {}
 .postmetadata {}
+fieldset	{border: 1px solid #ccc;}
 
-#sidebar {}
+
 
 .alignnone{}
 .alignleft{ float:left }
 .aligncenter{ margin: 0px auto}
 .alignright{ float: right}
 
-.wp-caption{ padding: 5px; border: 1px solid #DDD; text-align: center; background-color: #F3F3F3; }
-
-/* Navigation
--------------------------------------------------------------------------------*/
-.navgation {}
-.next-posts {}
-.prev-posts {}
-
-/* Search
--------------------------------------------------------------------------------*/
-#searchform {}
-#s {}
-#searchsubmt {}
-	
+.wp-caption{ padding: 5px; border: 1px solid #ccc; text-align: center; background-color: #F3F3F3; }
 
 /* Comments
 -------------------------------------------------------------------------------*/	

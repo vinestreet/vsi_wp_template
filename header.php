@@ -108,18 +108,21 @@
 
 <body <?php body_class(); ?>>
 	
-	<div id="page-wrap"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
+	<div id="page-wrap">
 
 		<header id="header">
 			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
+			
 			<div class="description"><?php bloginfo('description'); ?></div>
-			<nav id='nav-primary'>
+			
+			<nav id='nav-primary' class="clearfix">
 				<?php 
 					wp_nav_menu( array( 
 						'theme_location' => 'primary',
 						'container' => false
 					)); 
-				?>
+				?>		
 			</nav>
+			
 		</header>
-
+		<section id="main">

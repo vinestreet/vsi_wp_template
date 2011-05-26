@@ -14,11 +14,9 @@
 				
 				<?php the_tags( 'Tags: ', ', ', ''); ?>
 			
-				<?php include (TEMPLATEPATH . '/_/inc/meta.php' ); ?>
+				<?php include (TEMPLATEPATH . '/_/inc/post-meta.php' ); ?>
 
 			</div>
-			
-			<?php edit_post_link('Edit this entry','','.'); ?>
 			
 		</article>
 

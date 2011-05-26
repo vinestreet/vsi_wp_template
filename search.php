@@ -12,7 +12,7 @@
 
 				<h2><?php the_title(); ?></h2>
 
-				<?php include (TEMPLATEPATH . '/_/inc/meta.php' ); ?>
+				<?php include (TEMPLATEPATH . '/_/inc/post-meta.php' ); ?>
 
 				<div class="entry">
 

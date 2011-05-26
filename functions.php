@@ -11,22 +11,26 @@
 	//load WPAlchemy_MetaBox class
 	include_once '_/inc/MetaBox.php';
 	
-	if ( is_admin()) {
+	function vsi_init_method() {
+		if ( is_admin()) {
 	
-		// Load WPAlchemy_MetaBox style
-		wp_enqueue_style('custom_metabox_css', get_bloginfo('template_directory') . '_/css/metabox.css');
+			// Load WPAlchemy_MetaBox style
+			wp_enqueue_style('custom_metabox_css', get_bloginfo('template_directory') . '/_/css/metabox.css');
+			
+			//Add Custom Editor Style
+			add_editor_style('/_/css/editor-style.css');
+
+		}else {
 		
-		//Add Custom Editor Style
-		add_editor_style('_/css/editor-style.css');
+			//Load frontend Javascript
+			wp_register_script('scripts', get_bloginfo('template_directory') . '/_/js/scripts.js',array('jquery'),'1.0', true );
+			wp_enqueue_script('scripts');
+		
+		}
 	}
 	
-	if ( !is_admin() ) {
-		
-		//Load frontend Javascript
-		wp_register_script('scripts', get_bloginfo('template_directory') . '_/js/scripts.js',array('jquery'),'1.0' );
-		wp_enqueue_script('scripts');
-	}
-		
+	add_action('init', 'vsi_init_method');
+	
 	// Add RSS links to <head> section
 	automatic_feed_links();
 	
@@ -45,7 +49,7 @@
 	
 /* Add post format theme support. (WP 3.1)
 	-----------------------------------------------------------------------------*/
-	add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video'));
+	//add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'audio', 'chat', 'video'));
 		
 /* Register Widget Areas
 	----------------------------------------------------------------------------- */
