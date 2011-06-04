@@ -18,6 +18,5 @@ jQuery(document).ready(function($) {
 		}
 	);
 	
-	
 
 })

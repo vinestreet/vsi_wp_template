@@ -14,118 +14,123 @@ Version: 1.0
 
 
 /* Ok, let's clear this puppy out */
-@import "_/css/reset.css";
+	@import "_/css/reset.css";
 
-
-/* Globals
--------------------------------------------------------------------------------*/
-
-/* new Linux- and Windows-friendly sans-serif font stack: http://mky.be/fontstack 
+/* new Linux and Windows-friendly sans-serif font stack: http://mky.be/fontstack 
 	
 	using local fonts? make sure to read up on Paul Irish's 
    Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/
+
+	IMPORTANT
+	This template is based on the Fluid Grid concept 
+	Please read: http://www.alistapart.com/articles/fluidgrids/ 
+
 */
-  
-body {font: 13px Helmet, Freesans, sans-serif;}
+
+/* Globals
+-------------------------------------------------------------------------------*/
+   
+body {font: 100% Helmet, Freesans, sans-serif;}  
 body, select, input, textarea {color: #333;}
 
 ins {background-color: #fcd700; color: #000; text-decoration: none;}
 mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
 
 /* links */
-a {color: #03f;}
-a:hover {color: #69f;}
-a:link {-webkit-tap-highlight-color: #fcd700;} 
+	a {color: #03f;}
+	a:hover {color: #69f;}
+	a:link {-webkit-tap-highlight-color: #fcd700;} 
 
 /* Headings */
-h1,h2,h3,h4,h5,h6 { margin: 0 0 10px 0 }
-h1 { font-size: 28px }
-h2 { font-size: 24px }
-h3 { font-size: 20px }
-h4 { font-size: 16px }
-
-p { margin: 0 0 15px 0 }
-blockquote { font-style: italic; }
-blockquote p { }
+	h1,h2,h3,h4,h5,h6 { margin: 0 0 .75em 0 }
+	h1 { font-size: 1.75em }
+	h2 { font-size: 1.50em }
+	h3 { font-size: 1.25em }
+	h4 { font-size: 1.00em }
+	
+	p { margin: 0 0 1em 0 }
+	blockquote { font-style: italic; }
+	blockquote p { }
 
 /* Forms */
-fieldset	{padding: 20px; border: 1px solid #ccc;}
-legend{ padding: 0 10px; }
-label{ float: left;  clear: both }
+	fieldset	{padding: 1em; border: 1px solid #ccc;}
+	legend{ padding: 0 1em; }
+	label{ float: left;  clear: both }
 
 /* Lists */
-ul,ol { margin:0 0 10px; }
-ul li, ol li{ margin: 0 0 0 20px; }
+	ul,ol { margin:0 0 .75em; }
+	ul li, ol li{ margin: 0 0 0 1.25em; }
 
 /* Tables */
-table {border-collapse: collapse; border-spacing: 0; border: 1px solid #ccc; text-align: left; }
-tr th, thead th { font-weight: bold; padding: 10px }
-tr td { border-top: 1px solid #ccc; padding: 10px }
+	table { border-collapse: collapse; border: 1px solid #ccc; text-align: left; }
+	tr th, thead th { font-weight: bold; padding: 1.25em }
+	tr td { border-top: 1px solid #ccc; padding: .75em }
+
+::selection{ background: #ccc }
 
 /* Layout
 -------------------------------------------------------------------------------*/
 
-#page-wrap {width: 960px; margin: 20px auto;}
+#wrapper {max-width: 60em; margin: 20px auto; padding: 0 1em; overflow: auto;}
 
-#sidebar {}
-
-/* Navigation
+/* Header
 -------------------------------------------------------------------------------*/
-.navgation {}
-.next-posts {}
-.prev-posts {}
 
-/* LEVEL ONE */
-#nav-primary ul{ float:left; position: relative;  border-right:1px solid #ccc;}
-#nav-primary ul li{ margin: 0; float: left; zoom: 1; border-left:1px solid #ccc; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
-#nav-primary ul li a{ display: block; padding: 4px 8px;  color: #333; text-decoration: none; }
-#nav-primary ul li a:hover{ color: #69f; }
-#nav-primary ul li.hover,
-#nav-primary ul li:hover{ position: relative; }
+#header{ width: 100%; float: left; }
 
-/* LEVEL TWO */
-#nav-primary ul ul{ width: 220px; visibility: hidden; position: absolute; top: 100%; left: -1px; border-bottom:1px solid #ccc; }
-#nav-primary ul ul li{ font-weight: normal; background: #f6f6f6; float: none; border-bottom: none;  }  /* IE fix: vertical-align: top; */
-.ie #nav-primary ul ul li{vertical-align: top;}
+/* Navigation */
 
-#nav-primary ul ul li a{  width: 100%;   } 
-.ie #nav-primary ul ul li a{ display: inline-block; }
+	/* Uno */
+	#nav-primary ul{ float:left; position: relative; }
+	#nav-primary ul li{ margin: 0; float: left; zoom: 1; background: #f0f0f0 }
+	#nav-primary ul li a{ display: block; padding: .25em .5em;  color: #333; text-decoration: none; }
+	#nav-primary ul li a:hover{ color: #69f; }
+	#nav-primary ul li.hover,
+	#nav-primary ul li:hover{ position: relative; }
+	
+	/* Dos */
+	#nav-primary ul ul{ width: 220px; visibility: hidden; position: absolute; top: 100%; left: 0; }
+	#nav-primary ul ul li{ font-weight: normal;  float: none;  } 
+	.ie #nav-primary ul ul li{vertical-align: top;}
+	
+	#nav-primary ul ul li a{  width: 100%;   } 
+	.ie #nav-primary ul ul li a{ display: inline-block; }
+	
+	/* Tres */
+	#nav-primary ul ul ul{ left: 100%; top: 0;}
+	#nav-primary ul li:hover > ul{ visibility: visible; }
 
-/* LEVEL THREE */
-#nav-primary ul ul ul{ left: 100%; top: 0px; }
-#nav-primary ul li:hover > ul{ visibility: visible; }
 
-
-/* Search
--------------------------------------------------------------------------------*/
-#searchform {}
-#s {}
-#searchsubmt {}
+/* Search */
+	#searchform {}
+	#s {}
+	#searchsubmt {}
 
 /* Content
 -------------------------------------------------------------------------------*/	
 
-.post {}
+#main{ width: 70%; float: left; padding: 1em 0; }
 
-.entry-content {}
-.entry-content a {}
-.entry-content a:hover {}
+.post{}
 
-#meta {}
-.postmetadata {}
-fieldset	{border: 1px solid #ccc;}
+.entry{}
+.entry a {}
+.entry a:hover {}
 
-
+.meta {}
 
 .alignnone{}
 .alignleft{ float:left }
-.aligncenter{ margin: 0px auto}
+.aligncenter{ margin: 0 auto}
 .alignright{ float: right}
 
-.wp-caption{ padding: 5px; border: 1px solid #ccc; text-align: center; background-color: #F3F3F3; }
+.wp-caption{ padding: .25em; border: 1px solid #ccc; text-align: center; background-color: #F3F3F3; }
 
-/* Comments
--------------------------------------------------------------------------------*/	
+.pagination {}
+.next-posts {}
+.prev-posts {}
+
+/* Threaded Comments */	
 	
 ol.commentlist {list-style: none;}
 ol.commentlist li {}
@@ -133,32 +138,32 @@ ol.commentlist li.alt {}
 ol.commentlist li.bypostauthor {}
 ol.commentlist li.byuser {}
 ol.commentlist li.comment-author-admin {}
-ol.commentlist li.comment { padding: 10px; margin-left: 0;}
+ol.commentlist li.comment { padding: .75em; margin-left: 0;}
 ol.commentlist li.comment div.comment-author {}
 ol.commentlist li.comment div.vcard {}
 ol.commentlist li.comment div.vcard cite.fn {font-style: normal;}
 ol.commentlist li.comment div.vcard cite.fn a.url {}
-ol.commentlist li.comment div.vcard img.avatar {float:right; margin: 0 0 10px 10px;}
+ol.commentlist li.comment div.vcard img.avatar {float:right; margin: 0 0 .75em .75em;}
 ol.commentlist li.comment div.vcard img.avatar-32 {}
 ol.commentlist li.comment div.vcard img.photo {}
 ol.commentlist li.comment div.vcard span.says {}
 ol.commentlist li.comment div.commentmetadata {}
-ol.commentlist li.comment div.comment-meta {font-size: 10px;}
+ol.commentlist li.comment div.comment-meta {font-size: .75em;}
 ol.commentlist li.comment div.comment-meta a {color: #ccc;}
 ol.commentlist li.comment p {}
 ol.commentlist li.comment ul {}
 ol.commentlist li.comment div.reply {font-size: 11px;}
 ol.commentlist li.comment div.reply a {font-weight: bold;}
-ol.commentlist li.comment ul.children {list-style: none; margin: 10px 0 0;}
+ol.commentlist li.comment ul.children {list-style: none; margin: .75em 0 0;}
 ol.commentlist li.comment ul.children li {}
 ol.commentlist li.comment ul.children li.alt {}
 ol.commentlist li.comment ul.children li.bypostauthor {}
 ol.commentlist li.comment ul.children li.byuser {}
 ol.commentlist li.comment ul.children li.comment {}
 ol.commentlist li.comment ul.children li.comment-author-admin {}
-ol.commentlist li.comment ul.children li.depth-2 { margin: 0 0 10px 10px;}
-ol.commentlist li.comment ul.children li.depth-3 { margin: 0 0 10px 10px;}
-ol.commentlist li.comment ul.children li.depth-4 { margin: 0 0 10px 10px;}
+ol.commentlist li.comment ul.children li.depth-2 { margin: 0 0 .75em .75em;}
+ol.commentlist li.comment ul.children li.depth-3 { margin: 0 0 .75em .75em;}
+ol.commentlist li.comment ul.children li.depth-4 { margin: 0 0 .75em .75em;}
 ol.commentlist li.comment ul.children li.depth-5 {}
 ol.commentlist li.comment ul.children li.odd {}
 ol.commentlist li.even {background: #fff;}
@@ -168,6 +173,15 @@ ol.commentlist li.thread-alt {}
 ol.commentlist li.thread-even {}
 ol.commentlist li.thread-odd {}
 
+/* Sidebar
+-------------------------------------------------------------------------------*/	
+
+#sidebar{ width: 25%; float: right; }
+
+/* Footer
+-------------------------------------------------------------------------------*/
+
+#footer{ width: 100%; float: left; }
 
 /* Print styles!
 -------------------------------------------------------------------------------*/
@@ -175,7 +189,6 @@ ol.commentlist li.thread-odd {}
 
 .do-not-print { display: none; }
 #comments { page-break-before: always; }
-
 body { width: 100% !important; margin: 0 !important; padding: 0 !important; line-height: 1.4; word-spacing: 1.1pt; letter-spacing: 0.2pt; font-family: Garamond,"Times New Roman", serif; color: #000; background: none; font-size: 12pt; }
 h1,h2,h3,h4,h5,h6 { font-family: Helvetica, Arial, sans-serif; }
 h1 { font-size: 19pt; }
@@ -189,12 +202,11 @@ a img { border: none; }
 table { margin: 1px; text-align:left; }
 th { border-bottom: 1px solid #333;  font-weight: bold; }
 td { border-bottom: 1px solid #333; }
-th, td { padding: 4px 10px 4px 0; }
+th, td { padding: .25em .75em .25em 0; }
 caption { background: #fff; margin-bottom: 2em; text-align: left; }
 thead { display: table-header-group; }
 tr { page-break-inside: avoid; } 
 a { text-decoration: none; color: black; }
-
 
 }
 

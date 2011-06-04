@@ -108,9 +108,9 @@
 
 <body <?php body_class(); ?>>
 	
-	<div id="page-wrap">
+	<div id="wrapper">
 
-		<header id="header">
+		<header id="header"><!-- not needed? http://camendesign.com/code/developpeurs_sans_frontieres -->
 			
 			<div id="branding">
 				
@@ -120,13 +120,12 @@
 			</div>
 			
 			<nav id='nav-primary' class="clearfix">
-				<?php 
-					wp_nav_menu( array( 
-						'theme_location' => 'primary',
-						'container' => false
-					)); 
-				?>		
+			
+				<?php wp_nav_menu( array( 
+					'theme_location' => 'primary',
+					'container' => false
+				)); ?>
+					
 			</nav>
 			
 		</header>
-		<section id="main">

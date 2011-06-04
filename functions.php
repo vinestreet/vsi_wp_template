@@ -138,7 +138,7 @@
 	
 
 	
-/* Add Custom Taxonomies
+/* Register custom taxonomies
 	-----------------------------------------------------------------------------*/
 
 /*
@@ -171,7 +171,7 @@
 
 */
 
-/* Register Contextual Help menus
+/* Register contextual help menus
 	-----------------------------------------------------------------------------*/
 
 /*
@@ -208,7 +208,7 @@
 	
 */
 
-/* Register Custom Admin Meta Boxes (using the WPAlchemy_MetaBox class)
+/* Register custom admin metaoxes (using the WPAlchemy_MetaBox class)
 	-----------------------------------------------------------------------------*/
 
 /*
