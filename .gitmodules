@@ -1,0 +1,4 @@
+ [submodule "core"]
+	path = core
+	url = git://github.com/markjaquith/WordPress.git
+	branch = 3.2-branch

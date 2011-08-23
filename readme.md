@@ -1,5 +1,46 @@
 Standard Wordpress template for Vine Street Interactive
 
+Installation
+-----------
+
+Clone this repo into your working directory:
+
+	git clone git@github.com:vinestreet/necco.git .
+
+### Wordpress Submodule
+
+This repo has the wordpress core [Wordpress Core](https://github.com/markjaquith/WordPress) setup as a submodule.
+
+Before you install, you'll need to switch to the current stable wordpress branch. 
+Find the latest branch before `master` on the [Wordpress Core](https://github.com/markjaquith/WordPress). As of this writing, the latest branch is `3.2-branch`. open `.gitmodules` and enter the the appropriate branch
+
+Initialize the wordpress core submodule:
+
+	git submodule update --init
+	
+### Install Wordpress normally
+	
+
+### wp-config	
+
+Move `wp-config.php` from `core` to the http root.
+
+We need to move the wp-content directory to the root url. Add the following to `wp-config` just before the the call to `wp-settings`
+
+	/* Move wp-content - must be set before call to 'wp-settings'*/
+	define( 'WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] );
+	define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST']);
+	
+### index.php
+
+Move `index.php` from `core` to the http root.
+
+Open `index.php` and change the last line to:
+
+	require('core/wp-blog-header.php');
+
+Theme
+-----------
 Based on the HTML5 Reset Wordpress Theme
 
 ## Summary:
