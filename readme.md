@@ -11,20 +11,29 @@ Clone this repo into your working directory:
 
 This repo has the [Wordpress Core](https://github.com/markjaquith/WordPress) setup as a git submodule.
 
-Before activating the submodule, you'll need to specify which wordpress branch to pull from. To do this, find the latest branch before `master` on the [Wordpress Core](https://github.com/markjaquith/WordPress). As of this writing, the latest branch is `3.2-branch`. Open `.gitmodules` and enter the the appropriate branch name.
-
 Initialize the wordpress core submodule:
+
+cd into the root directory and enter:
 
 	git submodule update --init
 
-Having wordpress as a submodule makes upgrades very easy. Just `cd` into `/core` and checkout a new branch:
+The submodule will checkout the wordpress `master` branch. This branch is latest development version of wordpress and is often unstable. To checkout a stable version of wordpress, find the latest branch before `master` on the [Wordpress Core](https://github.com/markjaquith/WordPress). As of this writing, the latest stable branch is `3.2-branch`. 
+
+`cd` into `/core` and checkout the stable branch:
 	
-	git checkout "new branch"
+	git checkout 3.2-branch
+
+Upgrading the wordpress core is now as simple as checking out a new branch... that's awesome!
 	
-#### Install Wordpress from `/core`
+#### Install Wordpress
 	
+make sure php has write permissions to the http directories
+
+	/core/wp-admin/install.php
 
 #### wp-config	
+
+Installing wordpress will create a `wp-config.php` file.
 
 Move `core/wp-config.php` up one directory level to the http root directory.
 
