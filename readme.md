@@ -5,7 +5,7 @@ Installation
 
 Clone this repo into your working directory:
 
-	git clone git@github.com:vinestreet/necco.git .
+	git clone git@github.com:vinestreet/vsi_wp_template.git .
 
 #### Wordpress Submodule
 
@@ -13,11 +13,9 @@ This repo has the [Wordpress Core](https://github.com/markjaquith/WordPress) set
 
 Initialize the wordpress core submodule:
 
-cd into the root directory and enter:
-
 	git submodule update --init
 
-The submodule will checkout the wordpress `master` branch. This branch is latest development version of wordpress and is often unstable. To checkout a stable version of wordpress, find the latest branch before `master` on the [Wordpress Core](https://github.com/markjaquith/WordPress). As of this writing, the latest stable branch is `3.2-branch`. 
+This will checkout the wordpress `master` branch. This branch is latest development version of wordpress and is often unstable. To checkout a stable version of wordpress, find the latest branch before `master` on the [Wordpress Core](https://github.com/markjaquith/WordPress). As of this writing, the latest stable branch is `3.2-branch`. 
 
 `cd` into `/core` and checkout the stable branch:
 	
@@ -42,6 +40,8 @@ We now need to redirect the wordpress content directories (`themes`, `plugins`, 
 	/* Move wp-content - must be set before call to 'wp-settings'*/
 	define( 'WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] );
 	define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST']);
+
+In the wordpress general settings, remove /core from the site url. This tells wordpress to make the root url the home page.
 
 Theme
 -----------
