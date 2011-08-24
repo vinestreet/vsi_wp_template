@@ -7,43 +7,38 @@ Clone this repo into your working directory:
 
 	git clone git@github.com:vinestreet/necco.git .
 
-### Wordpress Submodule
+#### Wordpress Submodule
 
-This repo has the wordpress core [Wordpress Core](https://github.com/markjaquith/WordPress) setup as a submodule.
+This repo has the [Wordpress Core](https://github.com/markjaquith/WordPress) setup as a git submodule.
 
-Before you install, you'll need to switch to the current stable wordpress branch. 
-Find the latest branch before `master` on the [Wordpress Core](https://github.com/markjaquith/WordPress). As of this writing, the latest branch is `3.2-branch`. open `.gitmodules` and enter the the appropriate branch
+Before activating the submodule, you'll need to specify which wordpress branch to pull from. To do this, find the latest branch before `master` on the [Wordpress Core](https://github.com/markjaquith/WordPress). As of this writing, the latest branch is `3.2-branch`. Open `.gitmodules` and enter the the appropriate branch name.
 
 Initialize the wordpress core submodule:
 
 	git submodule update --init
+
+Having wordpress as a submodule makes upgrades very easy. Just `cd` into `/core` and checkout a new branch:
 	
-### Install Wordpress normally
+	git checkout "new branch"
+	
+#### Install Wordpress from `/core`
 	
 
-### wp-config	
+#### wp-config	
 
-Move `wp-config.php` from `core` to the http root.
+Move `core/wp-config.php` up one directory level to the http root directory.
 
-We need to move the wp-content directory to the root url. Add the following to `wp-config` just before the the call to `wp-settings`
+We now need to redirect the wordpress content directories (`themes`, `plugins`, and `uploads`) to the http root directory. Add the following to `wp-config.php` just before the the call to `wp-settings`
 
 	/* Move wp-content - must be set before call to 'wp-settings'*/
 	define( 'WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] );
 	define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST']);
-	
-### index.php
-
-Move `index.php` from `core` to the http root.
-
-Open `index.php` and change the last line to:
-
-	require('core/wp-blog-header.php');
 
 Theme
 -----------
 Based on the HTML5 Reset Wordpress Theme
 
-## Summary:
+### Summary:
 
 The HTML5 Reset Wordpress theme is a blank theme based on the [HTML5 Reset templates](https://github.com/murtaugh/HTML5-Reset). It's a great empty slate upon which to build your own HTML5-based Wordpress themes.
 
