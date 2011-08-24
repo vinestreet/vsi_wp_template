@@ -1,4 +1,5 @@
 wp-config.php
 uploads/
+core/
 .DS_Store?
 .htaccess
